@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.Objects;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -22,15 +23,15 @@ public class MainClass {
         public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
 
             String[] cols = value.toString().split(",");
-            int sex = Integer.parseInt(cols[2]);
-            String sexResult = "";
-            if (sex == 1){
-                sexResult = "Female";
+            String rainy = cols[5];
+            String rainyResult = "";
+            if (Objects.equals(rainy, "rain")){
+                rainyResult = "rain";
             } else {
-                sexResult = "Male";
+                rainyResult = "no rain";
             }
 
-            context.write(new Text(sexResult), one);
+            context.write(new Text(rainyResult), one);
         }
     }
 
