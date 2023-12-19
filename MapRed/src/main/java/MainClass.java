@@ -55,7 +55,7 @@ public class MainClass {
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
 
-        Job job = Job.getInstance(conf, "Covid-19 Male/Female cases");
+        Job job = Job.getInstance(conf, "Rain Rain/NoRain cases");
         job.setJarByClass(MainClass.class);
         job.setMapperClass(CustomMapper.class);
         job.setCombinerClass(CustomReducer.class);
