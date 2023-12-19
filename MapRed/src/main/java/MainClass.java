@@ -31,24 +31,6 @@ public class MainClass {
             }
 
             context.write(new Text(sexResult), one);
-
-            /*
-            String[] cols = value.toString().split(",");
-            int cases = 0;
-            int deaths = 0;
-            try{
-                cases = Integer.parseInt(cols[5]);
-            } catch (RuntimeException nxe){}
-
-            try {
-                deaths = Integer.parseInt(cols[8]);
-            } catch (NumberFormatException|IndexOutOfBoundsException e){
-
-            }
-
-            context.write(new Text(cols[0]), new Text(cases + "\t\t" + deaths + "\t\t0"));
-            System.out.println((double)cases + "/" + (double)deaths);
-             */
         }
     }
 
@@ -66,31 +48,6 @@ public class MainClass {
             }
 
             context.write(key, new IntWritable(sum));
-
-            /*
-            double sumCases = 0;
-            double sumDeath = 0;
-            double res = 0;
-            for (Text val : values) {
-                try{
-                    sumCases += Double.parseDouble(val.toString().split("\t\t")[0]);
-                    sumDeath += Double.parseDouble(val.toString().split("\t\t")[1]);
-                } catch (Exception e){
-                    throw new RuntimeException("String:\n" + val.toString() + "\n" + e);
-                }
-
-
-                if (sumDeath == 0){
-                    res = 0;
-                } else {
-                    res = sumCases/sumDeath;
-                }
-
-
-            }
-            result.set(sumCases+"\t\t"+sumDeath+"\t\t"+res);
-            context.write(key, result);
-             */
         }
     }
 
